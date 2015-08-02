@@ -1,0 +1,20 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<style rel="css">
+span{
+    color:red;
+}
+</style>
+</head>
+<body>
+	<form name="form1" ng-app novalidate>
+    <p>This is first application</p>
+    <input type="text" name="firstName" ng-model="firstName"required />
+    <input type="submit" value="Submit" ng-click="submitted=true"/>
+    <span ng-show="submitted && form1.$invalid">empty </span>
+	<p>{{firstName}}</p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<style>
+div{
+text-align:center;
+}
+</style>
+</head>
+<body >
+<div ng-app="ageGuesser" ng-controller="ageController">
+
+First Name:<input type="text" ng-model="firstName">
+<button ng-click="retryAge()">Retry</button>
+<p>Hello{{firstName}} are you {{age}} ? </p>
+
+</div>
+
+<script>
+var app = angular.module('ageGuesser', []);
+app.controller('ageController', function($scope) {
+    $scope.firstName = "Swamy";
+	$scope.age = Math.floor((Math.random() * 10) + 20 );
+	$scope.retryAge = function() {
+	$scope.age =  Math.floor((Math.random() * 20) + 20 );}
+
+});
+</script>
+
+</body>
+</html>

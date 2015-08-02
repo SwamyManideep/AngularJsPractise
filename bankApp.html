@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<style>
+ul{list-style:none;}
+li{margin-top:5px;}
+</style>
+</head>
+<body >
+<div ng-app="bankApp">
+		<ul ng-controller="balancesController">
+			<li ng-repeat="user in users | orderBy: 'name'">
+				{{user.name}} - {{user.balance | currency}}
+				<a href="#" ng-click="remove(user)">Delete</a>
+				<a href="#" ng-click="edit(user)">Edit</a>
+			</li>
+			<li><input type="text" id="name" ng-model="current.name" value="{{current.name}}" />
+			<input type="text" id="balance" ng-model="current.balance" value="{{current.balance}}"/>
+			</li>
+			<li>
+			<button ng-click="save(current)">Save</button>
+			<button ng-click="addNew(current)">Add New User</button></li>
+		</ul>
+</div>
+<script>
+var app = angular.module("bankApp", []);
+app.controller('balancesController', function($scope){
+	$scope.users = [
+						{"name":"Swamy", "balance":1191},
+						{"name":"Sham", "balance":1923},
+						{"name":"Manideep", "balance":1289},
+						{"name":"Tirumala", "balance":34848}
+	]; 
+	
+	$scope.addNew = function(user){
+		$scope.users.push(user);
+	};
+	$scope.remove = function(user){
+	var index = $scope.users.indexOf(user);
+	alert("deleted index:" + index);
+	$scope.users.splice(index, 1);
+	};
+	$scope.edit = function(user){
+	$scope.current = user;
+	};
+	$scope.save = function(user){
+	$scope.current = {};
+	}
+	$scope.current = {};
+});
+</script>
+</body>
+</html>
